@@ -1,0 +1,112 @@
+status = "supported"
+summary = "Add MCP servers via claude mcp add or .mcp.json. Three scopes (local/project/user), stdio/HTTP/SSE/WebSocket transports, OAuth, and tool search."
+transports = ["stdio", "http", "sse", "ws"]
+auth = ["oauth", "headers", "headersHelper"]
+docs = "https://docs.claude.com/en/docs/claude-code/mcp"
+notes = [
+  "Project scope uses .mcp.json (checked into version control, requires approval).",
+  "Local and user scopes are stored in ~/.claude.json; type 'streamable-http' is an alias for 'http'.",
+  "SSE transport is deprecated in favor of HTTP.",
+]
+
+[[files]]
+path = ".mcp.json"
+scope = "project"
+format = "json"
+key = "mcpServers"
+
+[[files]]
+path = "~/.claude.json"
+scope = "global"
+format = "json"
+key = "mcpServers"
+note = "Local scope nests under projects.<path>.mcpServers; user scope is top-level."
+
+[[fields]]
+name = "type"
+type = "\"stdio\" | \"http\" | \"sse\" | \"ws\""
+description = "Transport type. 'streamable-http' is accepted as an alias for 'http'."
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Executable for a stdio server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments for the stdio command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables. Supports ${VAR} and ${VAR:-default} expansion."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint for HTTP/SSE/WebSocket servers."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "Static HTTP headers (e.g. Authorization). Supports env expansion."
+
+[[fields]]
+name = "headersHelper"
+type = "string"
+description = "Command that prints a JSON object of headers at connect time (dynamic auth)."
+
+[[fields]]
+name = "oauth"
+type = "{ clientId?, callbackPort?, scopes?, authServerMetadataUrl? }"
+description = "OAuth configuration for remote servers."
+
+[[fields]]
+name = "timeout"
+type = "number"
+description = "Per-server tool execution timeout in milliseconds."
+
+[[fields]]
+name = "alwaysLoad"
+type = "boolean"
+description = "Exempt this server's tools from deferral so they load at session start."
+
+[[capabilities]]
+name = "Tools"
+status = "supported"
+
+[[capabilities]]
+name = "Resources"
+status = "supported"
+note = "Reference with @server:protocol://resource/path."
+
+[[capabilities]]
+name = "Prompts"
+status = "supported"
+note = "Exposed as /mcp__server__prompt commands."
+
+[[capabilities]]
+name = "Roots"
+status = "supported"
+note = "Claude Code answers roots/list with the project directory."
+
+[[capabilities]]
+name = "Elicitation"
+status = "supported"
+note = "Form and URL elicitation dialogs appear automatically."
+
+[[examples]]
+title = "Project HTTP server (.mcp.json)"
+language = "json"
+code = '''
+{
+  "mcpServers": {
+    "api-server": {
+      "type": "http",
+      "url": "${API_BASE_URL:-https://api.example.com}/mcp",
+      "headers": { "Authorization": "Bearer ${API_KEY}" }
+    }
+  }
+}
+'''

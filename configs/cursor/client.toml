@@ -1,0 +1,7 @@
+name = "Cursor"
+type = "editor"
+vendor = "Anysphere"
+description = "The AI code editor. Agent, Tab, and Inline Edit backed by frontier models."
+homepage = "https://cursor.com"
+docs = "https://cursor.com/docs"
+repo = ""

@@ -1,0 +1,8 @@
+status = "deprecated"
+summary = "Custom prompts (~/.codex/prompts/*.md, invoked /prompts:name) were deprecated and removed in codex-cli 0.117.0. Convert custom prompts to Skills."
+invocation = ["/prompts:name"]
+docs = "https://developers.openai.com/codex/cli/features"
+notes = [
+  "Codex still ships built-in slash commands (/review, /fork, /plan, /diff, /compact, etc.).",
+  "For reusable custom workflows, author Skills instead.",
+]

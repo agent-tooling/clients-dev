@@ -1,0 +1,49 @@
+status = "supported"
+summary = "Lifecycle hooks loaded from hooks.json or an inline [hooks] table in config.toml. Gated behind the features.hooks flag; command hooks are executed."
+events = [
+  "PreToolUse", "PermissionRequest", "PostToolUse",
+  "PreCompact", "PostCompact",
+  "SessionStart",
+  "SubagentStart", "SubagentStop",
+  "UserPromptSubmit", "Stop",
+]
+docs = "https://developers.openai.com/codex/config-reference"
+notes = [
+  "Enable with features.hooks = true (deprecated alias: features.codex_hooks).",
+  "Command hooks are supported; prompt and agent hook handlers are parsed but skipped.",
+  "Admins can enforce managed hooks via requirements.toml and allow_managed_hooks_only.",
+]
+
+[[files]]
+path = "~/.codex/config.toml"
+scope = "global"
+format = "toml"
+key = "hooks"
+note = "Inline [hooks] table, or a separate hooks.json."
+
+[[files]]
+path = ".codex/config.toml"
+scope = "project"
+format = "toml"
+key = "hooks"
+note = "Trusted projects only."
+
+[[fields]]
+name = "hooks.<event>"
+type = "array"
+description = "Matcher groups for a hook event."
+
+[[fields]]
+name = "hooks.<event>[].hooks"
+type = "array"
+description = "Hook handlers for a matcher group (command hooks supported)."
+
+[[fields]]
+name = "hooks.<event>[].hooks[].command"
+type = "string"
+description = "Command to run for a command hook."
+
+[[fields]]
+name = "hooks.<event>[].hooks[].commandWindows"
+type = "string"
+description = "Windows-only command override (alias command_windows)."

@@ -1,0 +1,30 @@
+status = "supported"
+summary = "AGENTS.md instruction files, layered from the Codex home directory down to the working directory, with override files and configurable fallbacks."
+docs = "https://developers.openai.com/codex/guides/agents-md"
+notes = [
+  "Codex reads AGENTS.override.md before AGENTS.md at each level; only one file per directory is used.",
+  "Files merge root-first; closer files override earlier guidance.",
+  "project_doc_max_bytes (default 32 KiB) caps combined size; project_doc_fallback_filenames adds alternate names.",
+]
+
+[[files]]
+path = "AGENTS.md"
+scope = "project"
+format = "markdown"
+note = "Project root down to CWD, including nested directories. AGENTS.override.md takes precedence."
+
+[[files]]
+path = "~/.codex/AGENTS.md"
+scope = "global"
+format = "markdown"
+note = "Global defaults inherited by every repository. ~/.codex/AGENTS.override.md for temporary overrides."
+
+[[examples]]
+title = "Global guidance (~/.codex/AGENTS.md)"
+language = "markdown"
+code = '''
+## Working agreements
+
+- Always run `npm test` after modifying JavaScript files.
+- Prefer `pnpm` when installing dependencies.
+'''

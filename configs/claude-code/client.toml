@@ -1,0 +1,7 @@
+name = "Claude Code"
+type = "cli"
+vendor = "Anthropic"
+description = "Anthropic's agentic command-line coding tool, deeply integrated with the terminal and your codebase."
+homepage = "https://claude.com/claude-code"
+docs = "https://docs.claude.com/en/docs/claude-code"
+repo = ""

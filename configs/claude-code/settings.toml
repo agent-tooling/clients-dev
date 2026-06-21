@@ -1,0 +1,67 @@
+status = "supported"
+summary = "Hierarchical settings.json controls permissions, environment, hooks, model, and skill behavior across user, project, local, and managed scopes."
+docs = "https://docs.claude.com/en/docs/claude-code/settings"
+
+[[files]]
+path = ".claude/settings.json"
+scope = "project"
+format = "json"
+note = "Shared project settings (checked in)."
+
+[[files]]
+path = ".claude/settings.local.json"
+scope = "project"
+format = "json"
+note = "Personal project settings (gitignored)."
+
+[[files]]
+path = "~/.claude/settings.json"
+scope = "global"
+format = "json"
+note = "User settings for all projects."
+
+[[files]]
+path = "managed-settings.json"
+scope = "enterprise"
+format = "json"
+note = "Managed policy settings deployed by IT/DevOps."
+
+[[fields]]
+name = "permissions"
+type = "{ allow?: string[], deny?: string[], ask?: string[], additionalDirectories?: string[] }"
+description = "Allow/deny/ask rules governing tool and command use."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables applied to every session."
+
+[[fields]]
+name = "hooks"
+type = "object"
+description = "Lifecycle hook configuration (see Hooks)."
+
+[[fields]]
+name = "model"
+type = "string"
+description = "Default model for sessions."
+
+[[fields]]
+name = "disableBundledSkills"
+type = "boolean"
+description = "Disable the built-in bundled skills (/code-review, /debug, etc.)."
+
+[[fields]]
+name = "skillOverrides"
+type = "record<string, \"on\" | \"name-only\" | \"user-invocable-only\" | \"off\">"
+description = "Override skill visibility without editing SKILL.md frontmatter."
+
+[[fields]]
+name = "autoMemoryEnabled"
+type = "boolean"
+description = "Toggle auto memory. Default true."
+
+[[fields]]
+name = "claudeMd"
+type = "string"
+description = "Managed CLAUDE.md content (managed/policy scope only)."

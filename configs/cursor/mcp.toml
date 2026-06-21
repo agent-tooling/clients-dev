@@ -1,0 +1,113 @@
+status = "supported"
+summary = "Configure MCP servers via mcp.json. Supports stdio, SSE, and Streamable HTTP, with OAuth and config interpolation."
+transports = ["stdio", "sse", "http"]
+auth = ["oauth", "headers", "static-oauth"]
+docs = "https://cursor.com/docs/context/mcp"
+
+[[files]]
+path = ".cursor/mcp.json"
+scope = "project"
+format = "json"
+key = "mcpServers"
+
+[[files]]
+path = "~/.cursor/mcp.json"
+scope = "global"
+format = "json"
+key = "mcpServers"
+
+[[fields]]
+name = "type"
+type = "\"stdio\""
+required = false
+description = "Server connection type for local command servers."
+
+[[fields]]
+name = "command"
+type = "string"
+required = false
+description = "Command to start a stdio server executable (e.g. npx, node, python, docker)."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables for the server. Supports ${env:NAME} interpolation."
+
+[[fields]]
+name = "envFile"
+type = "string"
+description = "Path to an environment file to load (stdio servers only)."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote HTTP or SSE server."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for remote servers (e.g. Authorization)."
+
+[[fields]]
+name = "auth"
+type = "{ CLIENT_ID: string, CLIENT_SECRET?: string, scopes?: string[] }"
+description = "Static OAuth client credentials for remote servers."
+
+[[capabilities]]
+name = "Tools"
+status = "supported"
+
+[[capabilities]]
+name = "Prompts"
+status = "supported"
+
+[[capabilities]]
+name = "Resources"
+status = "supported"
+
+[[capabilities]]
+name = "Roots"
+status = "supported"
+
+[[capabilities]]
+name = "Elicitation"
+status = "supported"
+
+[[capabilities]]
+name = "Apps"
+status = "supported"
+note = "Interactive UI views returned by MCP tools (MCP Apps extension)."
+
+[[examples]]
+title = "Local stdio server"
+language = "json"
+code = '''
+{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["-y", "mcp-server"],
+      "env": { "API_KEY": "value" }
+    }
+  }
+}
+'''
+
+[[examples]]
+title = "Remote server"
+language = "json"
+code = '''
+{
+  "mcpServers": {
+    "server-name": {
+      "url": "http://localhost:3000/mcp",
+      "headers": { "API_KEY": "value" }
+    }
+  }
+}
+'''

@@ -1,0 +1,120 @@
+status = "supported"
+summary = "MCP servers are defined as [mcp_servers.<name>] tables in config.toml. Supports stdio and Streamable HTTP, with bearer-token and OAuth auth."
+transports = ["stdio", "http"]
+auth = ["oauth", "bearer-token", "headers"]
+docs = "https://developers.openai.com/codex/mcp"
+notes = [
+  "The CLI and IDE extension share this configuration. Manage servers with `codex mcp`.",
+  "Project-scoped .codex/config.toml is loaded only for trusted projects.",
+]
+
+[[files]]
+path = "~/.codex/config.toml"
+scope = "global"
+format = "toml"
+key = "mcp_servers"
+
+[[files]]
+path = ".codex/config.toml"
+scope = "project"
+format = "toml"
+key = "mcp_servers"
+note = "Trusted projects only."
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Launcher command for a stdio server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the stdio command."
+
+[[fields]]
+name = "env"
+type = "map<string, string>"
+description = "Environment variables forwarded to the stdio server."
+
+[[fields]]
+name = "env_vars"
+type = "(string | { name, source })[]"
+description = "Additional env vars to allow/forward. source = local | remote."
+
+[[fields]]
+name = "cwd"
+type = "string"
+description = "Working directory for the stdio server process."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint for a Streamable HTTP server."
+
+[[fields]]
+name = "bearer_token_env_var"
+type = "string"
+description = "Env var name holding a bearer token sent in Authorization."
+
+[[fields]]
+name = "http_headers"
+type = "map<string, string>"
+description = "Static HTTP headers for each request."
+
+[[fields]]
+name = "env_http_headers"
+type = "map<string, string>"
+description = "HTTP headers populated from environment variables."
+
+[[fields]]
+name = "enabled"
+type = "boolean"
+description = "Disable a server without removing its config."
+
+[[fields]]
+name = "startup_timeout_sec"
+type = "number"
+description = "Server startup timeout (default 10s)."
+
+[[fields]]
+name = "tool_timeout_sec"
+type = "number"
+description = "Per-tool execution timeout (default 60s)."
+
+[[fields]]
+name = "enabled_tools"
+type = "string[]"
+description = "Allow list of tool names exposed by the server."
+
+[[fields]]
+name = "disabled_tools"
+type = "string[]"
+description = "Deny list applied after enabled_tools."
+
+[[fields]]
+name = "scopes"
+type = "string[]"
+description = "OAuth scopes to request when authenticating."
+
+[[capabilities]]
+name = "Tools"
+status = "supported"
+
+[[capabilities]]
+name = "Server instructions"
+status = "supported"
+note = "Codex reads the MCP `instructions` field as server-wide guidance."
+
+[[examples]]
+title = "stdio + Streamable HTTP servers"
+language = "toml"
+code = '''
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.figma]
+url = "https://mcp.figma.com/mcp"
+bearer_token_env_var = "FIGMA_OAUTH_TOKEN"
+http_headers = { "X-Figma-Region" = "us-east-1" }
+'''

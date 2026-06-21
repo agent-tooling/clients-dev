@@ -1,0 +1,69 @@
+status = "supported"
+summary = "config.toml is the single settings file for models, reasoning, sandboxing, approvals, and tools. requirements.toml enforces admin policy."
+docs = "https://developers.openai.com/codex/config-reference"
+notes = [
+  "Project-scoped .codex/config.toml can't override provider, auth, notification, or telemetry keys.",
+  "Install the Even Better TOML extension and add #:schema https://developers.openai.com/codex/config-schema.json for autocompletion.",
+]
+
+[[files]]
+path = "~/.codex/config.toml"
+scope = "global"
+format = "toml"
+
+[[files]]
+path = ".codex/config.toml"
+scope = "project"
+format = "toml"
+note = "Trusted projects only; provider/auth/telemetry keys are ignored here."
+
+[[files]]
+path = "requirements.toml"
+scope = "enterprise"
+format = "toml"
+note = "Admin-enforced constraints on security-sensitive settings."
+
+[[fields]]
+name = "model"
+type = "string"
+description = "Model slug Codex uses for turns."
+
+[[fields]]
+name = "model_reasoning_effort"
+type = "\"minimal\" | \"low\" | \"medium\" | \"high\" | \"xhigh\""
+description = "Reasoning effort for supported models."
+
+[[fields]]
+name = "approval_policy"
+type = "\"untrusted\" | \"on-request\" | \"never\" | \"granular\""
+description = "When Codex asks for command approval."
+
+[[fields]]
+name = "sandbox_mode"
+type = "\"read-only\" | \"workspace-write\" | \"danger-full-access\""
+description = "Filesystem/network sandbox for tool calls."
+
+[[fields]]
+name = "default_permissions"
+type = "string"
+description = "Named permissions profile (:read-only, :workspace, :danger-full-access, or custom)."
+
+[[fields]]
+name = "web_search"
+type = "\"disabled\" | \"cached\" | \"live\""
+description = "Web search mode (default cached)."
+
+[[fields]]
+name = "file_opener"
+type = "\"vscode\" | \"vscode-insiders\" | \"windsurf\" | \"cursor\" | \"none\""
+description = "URI scheme used to open citations from Codex output."
+
+[[examples]]
+title = "Common config.toml"
+language = "toml"
+code = '''
+model = "gpt-5.1-codex-max"
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+'''

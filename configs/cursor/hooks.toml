@@ -1,0 +1,84 @@
+status = "supported"
+summary = "hooks.json defines scripts that observe, block, or modify the agent loop. Command and prompt hook types. Claude Code hook compatible."
+events = [
+  "sessionStart", "sessionEnd",
+  "beforeSubmitPrompt",
+  "preToolUse", "postToolUse", "postToolUseFailure",
+  "beforeShellExecution", "afterShellExecution",
+  "beforeMCPExecution", "afterMCPExecution",
+  "beforeReadFile", "afterFileEdit",
+  "subagentStart", "subagentStop",
+  "preCompact", "stop",
+  "afterAgentResponse", "afterAgentThought",
+  "beforeTabFileRead", "afterTabFileEdit",
+  "workspaceOpen",
+]
+docs = "https://cursor.com/docs/agent/hooks"
+
+[[files]]
+path = ".cursor/hooks.json"
+scope = "project"
+format = "json"
+key = "hooks"
+
+[[files]]
+path = "~/.cursor/hooks.json"
+scope = "global"
+format = "json"
+key = "hooks"
+
+[[files]]
+path = "/Library/Application Support/Cursor/hooks.json"
+scope = "enterprise"
+format = "json"
+key = "hooks"
+note = "macOS MDM path. Linux/WSL: /etc/cursor/hooks.json; Windows: C:\\ProgramData\\Cursor\\hooks.json."
+
+[[fields]]
+name = "version"
+type = "number"
+required = true
+description = "Config schema version (currently 1)."
+
+[[fields]]
+name = "command"
+type = "string"
+required = true
+description = "Script path or shell command (for command hooks)."
+
+[[fields]]
+name = "type"
+type = "\"command\" | \"prompt\""
+description = "Hook execution type. Defaults to command."
+
+[[fields]]
+name = "timeout"
+type = "number"
+description = "Execution timeout in seconds."
+
+[[fields]]
+name = "loop_limit"
+type = "number | null"
+description = "Per-script loop limit for stop/subagentStop hooks. Default 5 for Cursor."
+
+[[fields]]
+name = "failClosed"
+type = "boolean"
+description = "When true, hook failures block the action instead of failing open."
+
+[[fields]]
+name = "matcher"
+type = "string"
+description = "Filter criteria (tool name, subagent type, or command pattern) for when the hook runs."
+
+[[examples]]
+title = "Format after edits"
+language = "json"
+code = '''
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [{ "command": ".cursor/hooks/format.sh" }]
+  }
+}
+'''

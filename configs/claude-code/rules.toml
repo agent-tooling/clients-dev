@@ -1,0 +1,51 @@
+status = "supported"
+summary = "CLAUDE.md memory files (project/user/managed) plus modular .claude/rules/*.md with optional path scoping. Auto memory accumulates learnings."
+docs = "https://docs.claude.com/en/docs/claude-code/memory"
+notes = [
+  "Claude Code reads CLAUDE.md, not AGENTS.md. Import an existing AGENTS.md with @AGENTS.md inside CLAUDE.md.",
+  "Auto memory is stored per repo in ~/.claude/projects/<project>/memory/MEMORY.md.",
+  "Use @path/to/file imports (max depth 4) to compose instructions.",
+]
+
+[[files]]
+path = "CLAUDE.md"
+scope = "project"
+format = "markdown"
+note = "Also reads ./.claude/CLAUDE.md. CLAUDE.local.md for gitignored personal notes."
+
+[[files]]
+path = ".claude/rules/*.md"
+scope = "project"
+format = "markdown"
+note = "Modular topic rules; recursive. Path-scope with the paths frontmatter field."
+
+[[files]]
+path = "~/.claude/CLAUDE.md"
+scope = "global"
+format = "markdown"
+note = "Personal instructions for all projects. ~/.claude/rules/*.md also supported."
+
+[[files]]
+path = "/Library/Application Support/ClaudeCode/CLAUDE.md"
+scope = "enterprise"
+format = "markdown"
+note = "Managed policy (macOS). Linux/WSL: /etc/claude-code/CLAUDE.md; Windows: C:\\Program Files\\ClaudeCode\\CLAUDE.md."
+
+[[fields]]
+name = "paths"
+type = "string | string[]"
+description = "Glob patterns; a rule file applies only when matching files are in context."
+
+[[examples]]
+title = "Path-scoped rule"
+language = "markdown"
+code = '''
+---
+paths:
+  - "src/api/**/*.ts"
+---
+
+# API Development Rules
+- All API endpoints must include input validation
+- Use the standard error response format
+'''

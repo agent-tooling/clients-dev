@@ -1,0 +1,13 @@
+status = "partial"
+summary = "Most settings live in the Cursor Settings UI. permissions.json controls Agent Run Mode allowlists and MCP auto-run behavior."
+docs = "https://cursor.com/docs/agent/mcp"
+notes = [
+  "Pre-configure which MCP tools run without approval by adding them to permissions.json.",
+  "autoRun instructions in permissions.json steer the Auto-review classifier per server or tool.",
+]
+
+[[files]]
+path = ".cursor/permissions.json"
+scope = "project"
+format = "json"
+note = "Allowlist MCP tools and shell commands for Run Mode."

@@ -1,0 +1,24 @@
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-border/50 py-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-sm text-muted-foreground sm:flex-row sm:px-6">
+        <p className="font-mono">
+          clients<span className="text-primary">.dev</span>
+        </p>
+        <p className="text-center sm:text-right">
+          An open database of AI coding client configuration. Contributions
+          welcome on{" "}
+          <a
+            href="https://github.com/agent-tooling/clients-dev"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-foreground transition-colors hover:text-primary"
+          >
+            GitHub
+          </a>
+          .
+        </p>
+      </div>
+    </footer>
+  );
+}

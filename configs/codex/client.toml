@@ -1,0 +1,7 @@
+name = "Codex"
+type = "cli"
+vendor = "OpenAI"
+description = "OpenAI's coding agent for the terminal and IDE, configured through a single config.toml."
+homepage = "https://developers.openai.com/codex"
+docs = "https://developers.openai.com/codex"
+repo = "https://github.com/openai/codex"

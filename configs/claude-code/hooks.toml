@@ -1,0 +1,61 @@
+status = "supported"
+summary = "Shell commands that fire on lifecycle events, configured in settings.json under the hooks key (or scoped to a skill/subagent)."
+events = [
+  "PreToolUse", "PostToolUse",
+  "UserPromptSubmit",
+  "Notification",
+  "Stop", "SubagentStop",
+  "SessionStart", "SessionEnd",
+  "PreCompact",
+  "Elicitation",
+  "InstructionsLoaded",
+]
+docs = "https://docs.claude.com/en/docs/claude-code/hooks"
+
+[[files]]
+path = ".claude/settings.json"
+scope = "project"
+format = "json"
+key = "hooks"
+
+[[files]]
+path = "~/.claude/settings.json"
+scope = "global"
+format = "json"
+key = "hooks"
+
+[[fields]]
+name = "matcher"
+type = "string"
+description = "Pattern matched against tool name (for PreToolUse/PostToolUse) to scope the hook."
+
+[[fields]]
+name = "hooks[].type"
+type = "\"command\""
+description = "Hook handler type."
+
+[[fields]]
+name = "hooks[].command"
+type = "string"
+description = "Shell command to run. Receives event JSON on stdin."
+
+[[fields]]
+name = "hooks[].timeout"
+type = "number"
+description = "Optional timeout in seconds for the hook command."
+
+[[examples]]
+title = "Format TypeScript after edits"
+language = "json"
+code = '''
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "prettier --write \"$CLAUDE_FILE_PATHS\"" }]
+      }
+    ]
+  }
+}
+'''

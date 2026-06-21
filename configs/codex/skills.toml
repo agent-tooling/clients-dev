@@ -1,0 +1,51 @@
+status = "supported"
+summary = "SKILL.md skills following the open Agent Skills standard, discovered from .agents/skills up to the repo root. Invoke with $ or /skills."
+invocation = ["$skill-name", "/skills", "implicit"]
+docs = "https://developers.openai.com/codex/skills"
+notes = [
+  "Codex scans .agents/skills in every directory from CWD up to the repository root.",
+  "Optional agents/openai.yaml adds UI metadata and policy.allow_implicit_invocation.",
+  "Disable a skill via [[skills.config]] (path + enabled) in config.toml.",
+]
+
+[[files]]
+path = ".agents/skills/<name>/SKILL.md"
+scope = "project"
+format = "markdown"
+note = "Scanned from CWD up to repo root."
+
+[[files]]
+path = "~/.agents/skills/<name>/SKILL.md"
+scope = "global"
+format = "markdown"
+note = "User skills applied across all repositories."
+
+[[files]]
+path = "/etc/codex/skills/<name>/SKILL.md"
+scope = "enterprise"
+format = "markdown"
+note = "Admin/system skills shared on the machine."
+
+[[fields]]
+name = "name"
+type = "string"
+required = true
+description = "Skill identifier."
+
+[[fields]]
+name = "description"
+type = "string"
+required = true
+description = "When the skill should and should not trigger."
+
+[[examples]]
+title = "Minimal SKILL.md"
+language = "markdown"
+code = '''
+---
+name: skill-name
+description: Explain exactly when this skill should and should not trigger.
+---
+
+Skill instructions for Codex to follow.
+'''

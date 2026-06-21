@@ -1,0 +1,43 @@
+status = "supported"
+summary = "Project rules as .mdc files with frontmatter, plus plain-markdown AGENTS.md (root and nested)."
+invocation = ["@rule-name"]
+docs = "https://cursor.com/docs/context/rules"
+
+[[files]]
+path = ".cursor/rules/*.mdc"
+scope = "project"
+format = "mdc"
+note = "Version-controlled, scoped via path patterns. Organize in subfolders."
+
+[[files]]
+path = "AGENTS.md"
+scope = "project"
+format = "markdown"
+note = "Plain-markdown instructions in project root and any subdirectory (nested)."
+
+[[fields]]
+name = "description"
+type = "string"
+description = "When set with alwaysApply false, Agent pulls the rule in when relevant."
+
+[[fields]]
+name = "globs"
+type = "string"
+description = "Comma-separated glob patterns; auto-attaches the rule for matching files."
+
+[[fields]]
+name = "alwaysApply"
+type = "boolean"
+description = "When true, the rule is included in every chat session."
+
+[[examples]]
+title = "Always-applied rule (.mdc)"
+language = "markdown"
+code = '''
+---
+alwaysApply: true
+---
+
+- All source files must include the company copyright header
+- Never modify generated files in dist/ or build/
+'''

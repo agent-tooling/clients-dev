@@ -1,0 +1,115 @@
+status = "supported"
+summary = "SKILL.md skills with rich frontmatter, invoked with /name or loaded automatically by Claude. Custom commands are merged into skills."
+invocation = ["/skill-name", "automatic"]
+docs = "https://docs.claude.com/en/docs/claude-code/skills"
+notes = [
+  "Live change detection reloads SKILL.md edits within a session.",
+  "Project skills load from .claude/skills/ up the directory tree and from nested dirs on demand.",
+]
+
+[[files]]
+path = ".claude/skills/<name>/SKILL.md"
+scope = "project"
+format = "markdown"
+
+[[files]]
+path = "~/.claude/skills/<name>/SKILL.md"
+scope = "global"
+format = "markdown"
+note = "Personal skills, available across all projects."
+
+[[fields]]
+name = "name"
+type = "string"
+description = "Display name. Defaults to the directory name."
+
+[[fields]]
+name = "description"
+type = "string"
+description = "What the skill does and when to use it. Recommended."
+
+[[fields]]
+name = "when_to_use"
+type = "string"
+description = "Extra trigger context appended to description in the skill listing."
+
+[[fields]]
+name = "argument-hint"
+type = "string"
+description = "Autocomplete hint for expected arguments."
+
+[[fields]]
+name = "arguments"
+type = "string | string[]"
+description = "Named positional arguments for $name substitution."
+
+[[fields]]
+name = "disable-model-invocation"
+type = "boolean"
+description = "When true, only the user can invoke (not Claude). Default false."
+
+[[fields]]
+name = "user-invocable"
+type = "boolean"
+description = "When false, hide from the / menu (Claude-only). Default true."
+
+[[fields]]
+name = "allowed-tools"
+type = "string | string[]"
+description = "Tools usable without approval while the skill is active."
+
+[[fields]]
+name = "disallowed-tools"
+type = "string | string[]"
+description = "Tools removed from the pool while the skill is active."
+
+[[fields]]
+name = "model"
+type = "string"
+description = "Model to use while the skill is active, or 'inherit'."
+
+[[fields]]
+name = "effort"
+type = "\"low\" | \"medium\" | \"high\" | \"xhigh\" | \"max\""
+description = "Effort level override while the skill is active."
+
+[[fields]]
+name = "context"
+type = "\"fork\""
+description = "Run the skill in a forked subagent context."
+
+[[fields]]
+name = "agent"
+type = "string"
+description = "Subagent type to use when context: fork is set."
+
+[[fields]]
+name = "hooks"
+type = "object"
+description = "Hooks scoped to the skill's lifecycle."
+
+[[fields]]
+name = "paths"
+type = "string | string[]"
+description = "Glob patterns that limit when the skill auto-activates."
+
+[[fields]]
+name = "shell"
+type = "\"bash\" | \"powershell\""
+description = "Shell for inline !`command` blocks. Default bash."
+
+[[examples]]
+title = "Task skill (manual invocation)"
+language = "markdown"
+code = '''
+---
+name: deploy
+description: Deploy the application to production
+disable-model-invocation: true
+allowed-tools: Bash(git add *) Bash(git commit *)
+---
+
+Deploy $ARGUMENTS to production:
+1. Run the test suite
+2. Build and push
+'''

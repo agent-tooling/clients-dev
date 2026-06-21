@@ -1,0 +1,38 @@
+status = "supported"
+summary = "Custom slash commands as markdown files. Merged into Skills — a command and a skill of the same name behave identically; skills add supporting files and auto-invocation."
+invocation = ["/command-name"]
+docs = "https://docs.claude.com/en/docs/claude-code/slash-commands"
+notes = [
+  ".claude/commands/<name>.md creates /<name> and supports the same frontmatter as skills.",
+  "Skills are recommended for new workflows since they support supporting files and model invocation.",
+]
+
+[[files]]
+path = ".claude/commands/<name>.md"
+scope = "project"
+format = "markdown"
+
+[[files]]
+path = "~/.claude/commands/<name>.md"
+scope = "global"
+format = "markdown"
+
+[[fields]]
+name = "description"
+type = "string"
+description = "What the command does."
+
+[[fields]]
+name = "argument-hint"
+type = "string"
+description = "Autocomplete hint for expected arguments."
+
+[[fields]]
+name = "allowed-tools"
+type = "string | string[]"
+description = "Tools the command may use without approval."
+
+[[fields]]
+name = "model"
+type = "string"
+description = "Model override while the command runs."

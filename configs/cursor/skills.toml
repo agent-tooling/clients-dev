@@ -1,0 +1,59 @@
+status = "supported"
+summary = "SKILL.md skills loaded from .cursor/skills and .agents/skills, invoked with / or @. Also reads Claude and Codex skill dirs."
+invocation = ["/skill-name", "@skill-name"]
+docs = "https://cursor.com/docs/context/skills"
+notes = [
+  "For compatibility, Cursor also loads skills from .claude/skills, .codex/skills, ~/.claude/skills, and ~/.codex/skills.",
+  "Skills in nested project dirs (e.g. apps/web/.cursor/skills/) are scoped to files in that dir.",
+]
+
+[[files]]
+path = ".cursor/skills/<name>/SKILL.md"
+scope = "project"
+format = "markdown"
+
+[[files]]
+path = ".agents/skills/<name>/SKILL.md"
+scope = "project"
+format = "markdown"
+note = "Shared agent-skills directory (cross-tool standard)."
+
+[[files]]
+path = "~/.cursor/skills/<name>/SKILL.md"
+scope = "global"
+format = "markdown"
+
+[[files]]
+path = "~/.agents/skills/<name>/SKILL.md"
+scope = "global"
+format = "markdown"
+
+[[fields]]
+name = "name"
+type = "string"
+description = "Skill name. Defaults to the containing folder name."
+
+[[fields]]
+name = "description"
+type = "string"
+description = "What the skill does; helps Agent decide when to load it."
+
+[[fields]]
+name = "paths"
+type = "string | string[]"
+description = "Glob patterns that scope the skill to matching files."
+
+[[examples]]
+title = "Scoped skill"
+language = "markdown"
+code = '''
+---
+name: react-component-patterns
+description: Conventions for writing React components.
+paths:
+  - "**/*.tsx"
+---
+
+# React component patterns
+...
+'''
