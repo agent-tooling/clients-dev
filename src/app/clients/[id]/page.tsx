@@ -3,18 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { ConfigSurface } from "@/components/config-surface";
+import {
+  ClientSurfaceTabs,
+  type SurfaceTab,
+} from "@/components/client-surface-tabs";
 import { getClient, getClientIds } from "@/lib/clients/catalog";
 import { SURFACES, SURFACE_META, type SurfaceId } from "@/lib/clients/schema";
 import { clientTypeLabel, SURFACE_ICON } from "@/lib/clients/display";
-import { cn } from "@/lib/utils";
 
 function MissingSurface({ surface }: { surface: SurfaceId }) {
   const Icon = SURFACE_ICON[surface];
   return (
-    <section
-      id={surface}
-      className="scroll-mt-24 rounded-xl border border-dashed border-border/60 bg-card/20 p-5 sm:p-6"
-    >
+    <section className="rounded-xl border border-dashed border-border/60 bg-card/20 p-5 sm:p-6">
       <div className="flex items-start gap-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground">
           <Icon className="h-4 w-4" />
@@ -77,10 +77,20 @@ export default async function ClientPage({
   const client = getClient(id);
   if (!client) notFound();
 
-  const surfaces = SURFACES.map((surface) => ({
-    surface,
-    config: client.surfaces[surface],
-  }));
+  const items: SurfaceTab[] = SURFACES.map((surface) => {
+    const config = client.surfaces[surface];
+    return {
+      id: surface,
+      label: SURFACE_META[surface].label,
+      status: config?.status,
+      content: config ? (
+        <ConfigSurface surface={surface} config={config} />
+      ) : (
+        <MissingSurface surface={surface} />
+      ),
+    };
+  });
+  const initialTab = items.find((item) => item.status)?.id ?? SURFACES[0];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -136,35 +146,8 @@ export default async function ClientPage({
         </div>
       </div>
 
-      <nav className="mt-6 flex flex-wrap gap-2">
-        {surfaces.map(({ surface, config }) => {
-          const Icon = SURFACE_ICON[surface];
-          return (
-            <a
-              key={surface}
-              href={`#${surface}`}
-              className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors hover:border-primary/40 hover:text-foreground",
-                config
-                  ? "border-border/60 text-muted-foreground"
-                  : "border-dashed border-border/60 text-muted-foreground/60",
-              )}
-            >
-              <Icon className="h-3.5 w-3.5" />
-              {SURFACE_META[surface].label}
-            </a>
-          );
-        })}
-      </nav>
-
-      <div className="mt-8 space-y-5">
-        {surfaces.map(({ surface, config }) =>
-          config ? (
-            <ConfigSurface key={surface} surface={surface} config={config} />
-          ) : (
-            <MissingSurface key={surface} surface={surface} />
-          ),
-        )}
+      <div className="mt-6">
+        <ClientSurfaceTabs items={items} initialTab={initialTab} />
       </div>
     </div>
   );

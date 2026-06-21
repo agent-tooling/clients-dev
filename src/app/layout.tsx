@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex h-dvh flex-col overflow-hidden antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -66,7 +66,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SiteHeader searchItems={buildSearchItems()} />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
           <SiteFooter />
           <Toaster richColors position="top-center" />
         </ThemeProvider>

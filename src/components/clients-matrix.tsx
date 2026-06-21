@@ -137,7 +137,7 @@ export function ClientsMatrix({ clients }: { clients: MatrixClient[] }) {
                 {SURFACES.map((surface) => (
                   <td key={surface} className="px-2 py-3 text-center">
                     <Link
-                      href={`/clients/${client.id}#${surface}`}
+                      href={`/clients/${client.id}?tab=${surface}`}
                       className="inline-flex items-center justify-center"
                       aria-label={`${client.name} ${SURFACE_META[surface].label}`}
                     >
