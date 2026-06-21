@@ -1,0 +1,53 @@
+status = "supported"
+summary = "Configure MCP servers in JSON. Global uses mcpServers; project uses the VS Code servers key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+
+[[files]]
+path = "~/.copilot/mcp-config.json"
+scope = "global"
+format = "json"
+key = "mcpServers"
+note = "Or $XDG_CONFIG_HOME/mcp-config.json."
+
+[[files]]
+path = ".vscode/mcp.json"
+scope = "project"
+format = "json"
+key = "servers"
+note = "Project config uses the VS Code servers key."
+
+[[fields]]
+name = "type"
+type = "\"stdio\" | \"http\" | \"sse\""
+description = "Server transport type."
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Command to start a local (stdio) server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables for the server."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote server."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for a remote server."
+
+[[fields]]
+name = "tools"
+type = "string[]"
+description = "Tool allow-list; global entries use [\"*\"] for all tools."

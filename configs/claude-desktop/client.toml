@@ -1,0 +1,4 @@
+name = "Claude Desktop"
+type = "desktop-app"
+vendor = "Anthropic"
+homepage = "https://claude.ai/download"

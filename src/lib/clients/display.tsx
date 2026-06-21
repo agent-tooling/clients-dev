@@ -26,11 +26,18 @@ export const CLIENT_TYPE_LABEL: Record<string, string> = {
   platform: "Platform",
 };
 
+/** Human label for a (possibly unknown) client type. */
+export function clientTypeLabel(type?: string): string {
+  if (!type) return "";
+  return CLIENT_TYPE_LABEL[type] ?? type;
+}
+
 export const STATUS_LABEL: Record<string, string> = {
   supported: "Supported",
   partial: "Partial",
   deprecated: "Deprecated",
   unsupported: "Not supported",
+  missing: "Information missing",
 };
 
 /** Tailwind classes for a status pill, keyed by support status. */
@@ -38,11 +45,13 @@ export const STATUS_CLASS: Record<string, string> = {
   supported:
     "bg-primary/10 text-primary border-primary/20",
   partial:
-    "bg-chart-4/10 text-chart-4 border-chart-4/30",
+    "bg-amber-500/10 text-amber-600 border-amber-500/30 dark:text-amber-400",
   deprecated:
     "bg-muted text-muted-foreground border-border",
   unsupported:
     "bg-destructive/10 text-destructive border-destructive/20",
+  missing:
+    "bg-muted/60 text-muted-foreground border-dashed border-border",
 };
 
 export const SCOPE_LABEL: Record<string, string> = {

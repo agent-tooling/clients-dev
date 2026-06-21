@@ -1,0 +1,4 @@
+name = "Warp"
+type = "cli"
+vendor = "Warp"
+homepage = "https://www.warp.dev/"

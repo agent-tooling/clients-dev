@@ -1,0 +1,4 @@
+name = "Zencoder"
+type = "ide-extension"
+vendor = "Zencoder"
+homepage = "https://zencoder.ai/"

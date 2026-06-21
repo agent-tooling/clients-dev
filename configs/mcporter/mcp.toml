@@ -1,0 +1,47 @@
+status = "supported"
+summary = "Configure MCP servers in JSON under the mcpServers key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+
+[[files]]
+path = "~/.mcporter/mcporter.json"
+scope = "global"
+format = "json"
+key = "mcpServers"
+note = "Also reads mcporter.jsonc."
+
+[[files]]
+path = "config/mcporter.json"
+scope = "project"
+format = "json"
+key = "mcpServers"
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Command to start a local (stdio) server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables for the server."
+
+[[fields]]
+name = "type"
+type = "\"http\" | \"sse\""
+description = "Remote transport type."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote server."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for a remote server."

@@ -1,0 +1,4 @@
+name = "Gemini CLI"
+type = "cli"
+vendor = "Google"
+homepage = "https://github.com/google-gemini/gemini-cli"

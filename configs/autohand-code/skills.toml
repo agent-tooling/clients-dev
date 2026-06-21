@@ -1,0 +1,26 @@
+status = "supported"
+summary = "SKILL.md skills following the open Agent Skills standard."
+invocation = ["/skill-name"]
+notes = ["Skill discovery paths from the open skills CLI (vercel-labs/skills)."]
+
+[[files]]
+path = ".autohand/skills/<name>/SKILL.md"
+scope = "project"
+format = "markdown"
+
+[[files]]
+path = "~/.autohand/skills/<name>/SKILL.md"
+scope = "global"
+format = "markdown"
+
+[[fields]]
+name = "name"
+type = "string"
+required = true
+description = "Skill identifier (required by the Agent Skills standard)."
+
+[[fields]]
+name = "description"
+type = "string"
+required = true
+description = "What the skill does and when to use it."

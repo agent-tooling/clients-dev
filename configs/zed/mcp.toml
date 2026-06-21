@@ -1,0 +1,53 @@
+status = "supported"
+summary = "Configure MCP servers in JSON under the context_servers key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+notes = ["Servers live under context_servers; entries set source: \"custom\"."]
+
+[[files]]
+path = "<Zed config>/settings.json"
+scope = "global"
+format = "json"
+key = "context_servers"
+note = "macOS/Windows: .../Zed/settings.json; Linux: .../zed/settings.json."
+
+[[files]]
+path = ".zed/settings.json"
+scope = "project"
+format = "json"
+key = "context_servers"
+
+[[fields]]
+name = "source"
+type = "\"custom\""
+description = "Set to 'custom' for user-defined servers."
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Command to start a local (stdio) server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables for the server."
+
+[[fields]]
+name = "type"
+type = "\"http\" | \"sse\""
+description = "Remote transport type."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote server."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for a remote server."

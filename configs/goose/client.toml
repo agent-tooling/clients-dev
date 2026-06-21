@@ -1,0 +1,4 @@
+name = "Goose"
+type = "cli"
+vendor = "Block"
+homepage = "https://block.github.io/goose/"

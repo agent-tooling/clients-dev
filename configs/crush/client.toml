@@ -1,0 +1,4 @@
+name = "Crush"
+type = "cli"
+vendor = "Charm"
+homepage = "https://github.com/charmbracelet/crush"

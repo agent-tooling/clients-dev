@@ -1,0 +1,4 @@
+name = "Devin for Terminal"
+type = "cli"
+vendor = "Cognition"
+homepage = "https://devin.ai/"

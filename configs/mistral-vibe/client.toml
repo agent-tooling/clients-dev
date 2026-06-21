@@ -1,0 +1,4 @@
+name = "Mistral Vibe"
+type = "cli"
+vendor = "Mistral"
+homepage = "https://mistral.ai/"

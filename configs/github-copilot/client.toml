@@ -1,0 +1,4 @@
+name = "GitHub Copilot"
+type = "ide-extension"
+vendor = "GitHub"
+homepage = "https://github.com/features/copilot"

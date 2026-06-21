@@ -62,6 +62,8 @@ export const SupportStatus = z.enum([
   "partial",
   "deprecated",
   "unsupported",
+  // "missing" = we have not verified this from official docs/source yet.
+  "missing",
 ]);
 
 /** A concrete config file location for a surface. */
@@ -134,7 +136,8 @@ export const ClientType = z.enum([
 /** Client metadata from `client.toml`. */
 export const ClientMeta = z.object({
   name: z.string(),
-  type: ClientType,
+  // Optional: only set when the client category is verified. Otherwise unknown.
+  type: ClientType.optional(),
   vendor: z.string().optional(),
   description: z.string().optional(),
   homepage: z.string().optional(),
@@ -148,7 +151,8 @@ export type ClientMeta = z.infer<typeof ClientMeta>;
 /** A fully compiled client: metadata + its per-surface configs. */
 export const Client = ClientMeta.extend({
   id: z.string(),
-  surfaces: z.record(z.enum(SURFACES), SurfaceConfig),
+  // Partial: a client only includes surfaces we have verified data for.
+  surfaces: z.partialRecord(z.enum(SURFACES), SurfaceConfig),
 });
 export type Client = z.infer<typeof Client>;
 

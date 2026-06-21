@@ -4,8 +4,47 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 import { ConfigSurface } from "@/components/config-surface";
 import { getClient, getClientIds } from "@/lib/clients/catalog";
-import { SURFACES, SURFACE_META } from "@/lib/clients/schema";
-import { CLIENT_TYPE_LABEL, SURFACE_ICON } from "@/lib/clients/display";
+import { SURFACES, SURFACE_META, type SurfaceId } from "@/lib/clients/schema";
+import { clientTypeLabel, SURFACE_ICON } from "@/lib/clients/display";
+import { cn } from "@/lib/utils";
+
+function MissingSurface({ surface }: { surface: SurfaceId }) {
+  const Icon = SURFACE_ICON[surface];
+  return (
+    <section
+      id={surface}
+      className="scroll-mt-24 rounded-xl border border-dashed border-border/60 bg-card/20 p-5 sm:p-6"
+    >
+      <div className="flex items-start gap-3">
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+          <Icon className="h-4 w-4" />
+        </div>
+        <div>
+          <div className="flex items-center gap-2">
+            <h3 className="font-mono text-base font-semibold tracking-tight text-muted-foreground">
+              {SURFACE_META[surface].label}
+            </h3>
+            <span className="inline-flex items-center rounded-full border border-dashed border-border px-2 py-0.5 text-xs font-medium text-muted-foreground">
+              Information missing
+            </span>
+          </div>
+          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+            We haven&apos;t verified this surface for this client yet.{" "}
+            <a
+              href="https://github.com/agent-tooling/clients-dev"
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary hover:underline"
+            >
+              Contribute it
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export const dynamicParams = false;
 
@@ -38,10 +77,10 @@ export default async function ClientPage({
   const client = getClient(id);
   if (!client) notFound();
 
-  const present = SURFACES.flatMap((surface) => {
-    const config = client.surfaces[surface];
-    return config ? [{ surface, config }] : [];
-  });
+  const surfaces = SURFACES.map((surface) => ({
+    surface,
+    config: client.surfaces[surface],
+  }));
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
@@ -58,9 +97,11 @@ export default async function ClientPage({
             <h1 className="font-mono text-3xl font-bold tracking-tight">
               {client.name}
             </h1>
-            <span className="rounded-full border border-border/60 px-2 py-0.5 text-xs text-muted-foreground">
-              {CLIENT_TYPE_LABEL[client.type] ?? client.type}
-            </span>
+            {client.type ? (
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-xs text-muted-foreground">
+                {clientTypeLabel(client.type)}
+              </span>
+            ) : null}
           </div>
           {client.vendor ? (
             <p className="mt-1 text-sm text-muted-foreground">{client.vendor}</p>
@@ -96,13 +137,18 @@ export default async function ClientPage({
       </div>
 
       <nav className="mt-6 flex flex-wrap gap-2">
-        {present.map(({ surface }) => {
+        {surfaces.map(({ surface, config }) => {
           const Icon = SURFACE_ICON[surface];
           return (
             <a
               key={surface}
               href={`#${surface}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border/60 px-3 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+              className={cn(
+                "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors hover:border-primary/40 hover:text-foreground",
+                config
+                  ? "border-border/60 text-muted-foreground"
+                  : "border-dashed border-border/60 text-muted-foreground/60",
+              )}
             >
               <Icon className="h-3.5 w-3.5" />
               {SURFACE_META[surface].label}
@@ -112,9 +158,13 @@ export default async function ClientPage({
       </nav>
 
       <div className="mt-8 space-y-5">
-        {present.map(({ surface, config }) => (
-          <ConfigSurface key={surface} surface={surface} config={config} />
-        ))}
+        {surfaces.map(({ surface, config }) =>
+          config ? (
+            <ConfigSurface key={surface} surface={surface} config={config} />
+          ) : (
+            <MissingSurface key={surface} surface={surface} />
+          ),
+        )}
       </div>
     </div>
   );

@@ -5,36 +5,33 @@ import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import { SURFACES, SURFACE_META, type SurfaceId } from "@/lib/clients/schema";
-import {
-  CLIENT_TYPE_LABEL,
-  STATUS_LABEL,
-  SURFACE_ICON,
-} from "@/lib/clients/display";
+import { clientTypeLabel, STATUS_LABEL, SURFACE_ICON } from "@/lib/clients/display";
 
 export type MatrixClient = {
   id: string;
   name: string;
   vendor: string;
-  type: string;
+  type?: string;
   description: string;
   statuses: Partial<Record<SurfaceId, string>>;
 };
 
 const DOT_CLASS: Record<string, string> = {
   supported: "bg-primary",
-  partial: "bg-chart-4",
+  partial: "bg-amber-500",
   deprecated: "bg-muted-foreground/40",
-  unsupported: "bg-transparent border border-border",
+  unsupported: "bg-destructive/70",
+  missing: "bg-transparent border border-dashed border-border",
 };
 
 function Dot({ status }: { status: string | undefined }) {
-  const resolved = status ?? "unsupported";
+  const resolved = status ?? "missing";
   return (
     <span
-      title={status ? STATUS_LABEL[status] : "Not documented"}
+      title={STATUS_LABEL[resolved] ?? "Information missing"}
       className={cn(
         "inline-block h-2.5 w-2.5 rounded-full",
-        DOT_CLASS[resolved] ?? DOT_CLASS.unsupported,
+        DOT_CLASS[resolved] ?? DOT_CLASS.missing,
       )}
     />
   );
@@ -54,7 +51,7 @@ export function ClientsMatrix({ clients }: { clients: MatrixClient[] }) {
     const q = query.trim().toLowerCase();
     const matched = clients.filter((client) =>
       q
-        ? `${client.name} ${client.vendor} ${client.id} ${client.type}`
+        ? `${client.name} ${client.vendor} ${client.id} ${client.type ?? ""}`
             .toLowerCase()
             .includes(q)
         : true,
@@ -133,7 +130,7 @@ export function ClientsMatrix({ clients }: { clients: MatrixClient[] }) {
                       {client.name}
                     </span>
                     <span className="ml-2 text-xs text-muted-foreground">
-                      {CLIENT_TYPE_LABEL[client.type] ?? client.type}
+                      {clientTypeLabel(client.type)}
                     </span>
                   </Link>
                 </td>
@@ -165,14 +162,14 @@ export function ClientsMatrix({ clients }: { clients: MatrixClient[] }) {
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
-        {(["supported", "partial", "deprecated", "unsupported"] as const).map(
-          (status) => (
-            <span key={status} className="inline-flex items-center gap-1.5">
-              <Dot status={status === "unsupported" ? undefined : status} />
-              {status === "unsupported" ? "Not documented" : STATUS_LABEL[status]}
-            </span>
-          ),
-        )}
+        {(
+          ["supported", "partial", "deprecated", "unsupported", "missing"] as const
+        ).map((status) => (
+          <span key={status} className="inline-flex items-center gap-1.5">
+            <Dot status={status} />
+            {STATUS_LABEL[status]}
+          </span>
+        ))}
       </div>
     </div>
   );

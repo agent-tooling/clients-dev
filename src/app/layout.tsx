@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { Toaster } from "@/components/ui/sonner";
 import type { SearchItem } from "@/components/search-command";
 import { getClients } from "@/lib/clients/catalog";
-import { CLIENT_TYPE_LABEL } from "@/lib/clients/display";
+import { clientTypeLabel } from "@/lib/clients/display";
 import { SURFACES, SURFACE_META } from "@/lib/clients/schema";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -37,7 +37,7 @@ function buildSearchItems(): SearchItem[] {
   const clients = getClients().map<SearchItem>((client) => ({
     type: "client",
     title: client.name,
-    subtitle: CLIENT_TYPE_LABEL[client.type] ?? client.type,
+    subtitle: clientTypeLabel(client.type) || "Client",
     href: `/clients/${client.id}`,
     keywords: [client.id, client.vendor ?? ""].filter(Boolean),
   }));

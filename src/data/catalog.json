@@ -1,6 +1,479 @@
 {
-  "generatedAt": "2026-06-21T15:56:55.459Z",
+  "generatedAt": "2026-06-21T17:00:32.624Z",
   "clients": [
+    {
+      "name": "AdaL",
+      "id": "adal",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".adal/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.adal/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "AiderDesk",
+      "type": "desktop-app",
+      "id": "aider-desk",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".aider-desk/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.aider-desk/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Amp",
+      "type": "cli",
+      "vendor": "Sourcegraph",
+      "homepage": "https://ampcode.com/",
+      "id": "amp",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Antigravity",
+      "type": "editor",
+      "vendor": "Google",
+      "homepage": "https://antigravity.google/",
+      "id": "antigravity",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/.gemini/antigravity/mcp_config.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "serverUrl",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Remote entries use serverUrl (no type field)."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.gemini/antigravity/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Antigravity CLI",
+      "type": "cli",
+      "vendor": "Google",
+      "id": "antigravity-cli",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.gemini/antigravity-cli/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "AstrBot",
+      "id": "astrbot",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": "data/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.astrbot/data/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Augment",
+      "type": "ide-extension",
+      "vendor": "Augment Code",
+      "homepage": "https://www.augmentcode.com/",
+      "id": "augment",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".augment/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.augment/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Autohand Code CLI",
+      "id": "autohand-code",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".autohand/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.autohand/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
     {
       "name": "Claude Code",
       "type": "cli",
@@ -551,6 +1024,476 @@
       }
     },
     {
+      "name": "Claude Desktop",
+      "type": "desktop-app",
+      "vendor": "Anthropic",
+      "homepage": "https://claude.ai/download",
+      "id": "claude-desktop",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Local (stdio) MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/Library/Application Support/Claude/claude_desktop_config.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers",
+              "note": "macOS path; see Claude Desktop docs for other operating systems."
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            }
+          ],
+          "transports": [
+            "stdio"
+          ],
+          "auth": [],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Only local (stdio) servers are configured via the file. Add remote servers through Settings → Connectors in the app."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cline",
+      "type": "ide-extension",
+      "vendor": "Cline",
+      "homepage": "https://cline.bot",
+      "id": "cline",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "saoudrizwan.claude-dev/settings/cline_mcp_settings.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers",
+              "note": "Stored under the VS Code globalStorage directory (e.g. ~/Library/Application Support/Code/User/globalStorage on macOS)."
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "type",
+              "type": "\"sse\" | \"streamableHttp\"",
+              "required": false,
+              "description": "Remote transport type."
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "required": false,
+              "description": "Whether the server is disabled."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Remote entries set type to 'sse' or 'streamableHttp' and include disabled."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "supported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cline CLI",
+      "type": "cli",
+      "vendor": "Cline",
+      "homepage": "https://cline.bot",
+      "id": "cline-cli",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/.cline/data/settings/cline_mcp_settings.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers",
+              "note": "$CLINE_DIR defaults to ~/.cline."
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "type",
+              "type": "\"sse\" | \"streamableHttp\"",
+              "required": false,
+              "description": "Remote transport type."
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "required": false,
+              "description": "Whether the server is disabled."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": []
+        }
+      }
+    },
+    {
+      "name": "Code Studio",
+      "id": "codestudio",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".codestudio/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.codestudio/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "CodeArts Agent",
+      "vendor": "Huawei",
+      "id": "codearts-agent",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".codeartsdoer/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.codeartsdoer/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "CodeBuddy",
+      "vendor": "Tencent",
+      "id": "codebuddy",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".codebuddy/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.codebuddy/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Codemaker",
+      "id": "codemaker",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".codemaker/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.codemaker/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
       "name": "Codex",
       "type": "cli",
       "vendor": "OpenAI",
@@ -977,6 +1920,215 @@
       }
     },
     {
+      "name": "Command Code",
+      "id": "command-code",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".commandcode/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.commandcode/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Continue",
+      "type": "ide-extension",
+      "vendor": "Continue",
+      "homepage": "https://continue.dev/",
+      "id": "continue",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".continue/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.continue/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cortex Code",
+      "type": "cli",
+      "vendor": "Snowflake",
+      "id": "cortex",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".cortex/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.snowflake/cortex/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crush",
+      "type": "cli",
+      "vendor": "Charm",
+      "homepage": "https://github.com/charmbracelet/crush",
+      "id": "crush",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".crush/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/crush/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
       "name": "Cursor",
       "type": "editor",
       "vendor": "Anysphere",
@@ -1375,6 +2527,3221 @@
             "autoRun instructions in permissions.json steer the Auto-review classifier per server or tool."
           ],
           "docs": "https://cursor.com/docs/agent/mcp"
+        }
+      }
+    },
+    {
+      "name": "Deep Agents",
+      "id": "deepagents",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.deepagents/agent/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Devin for Terminal",
+      "type": "cli",
+      "vendor": "Cognition",
+      "homepage": "https://devin.ai/",
+      "id": "devin",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".devin/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/devin/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dexto",
+      "id": "dexto",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Droid",
+      "type": "cli",
+      "vendor": "Factory",
+      "homepage": "https://factory.ai/",
+      "id": "droid",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".factory/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.factory/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eve",
+      "id": "eve",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": "agent/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills).",
+            "Project-only; skills are stored as flat <name>.md files."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Firebender",
+      "type": "ide-extension",
+      "vendor": "Firebender",
+      "homepage": "https://firebender.com/",
+      "id": "firebender",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.firebender/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "ForgeCode",
+      "type": "cli",
+      "vendor": "ForgeCode",
+      "homepage": "https://forgecode.dev/",
+      "id": "forgecode",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".forge/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.forge/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Gemini CLI",
+      "type": "cli",
+      "vendor": "Google",
+      "homepage": "https://github.com/google-gemini/gemini-cli",
+      "id": "gemini-cli",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/.gemini/settings.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers"
+            },
+            {
+              "path": ".gemini/settings.json",
+              "scope": "project",
+              "format": "json",
+              "key": "mcpServers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            },
+            {
+              "name": "timeout",
+              "type": "number",
+              "required": false,
+              "description": "Request timeout in milliseconds for remote servers."
+            },
+            {
+              "name": "oauth",
+              "type": "{ scopes: string[] }",
+              "required": false,
+              "description": "OAuth configuration (scopes written under oauth.scopes)."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers",
+            "oauth"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": []
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.gemini/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "GitHub Copilot",
+      "type": "ide-extension",
+      "vendor": "GitHub",
+      "homepage": "https://github.com/features/copilot",
+      "id": "github-copilot",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.copilot/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "GitHub Copilot CLI",
+      "type": "cli",
+      "vendor": "GitHub",
+      "homepage": "https://github.com/features/copilot",
+      "id": "github-copilot-cli",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON. Global uses mcpServers; project uses the VS Code servers key.",
+          "files": [
+            {
+              "path": "~/.copilot/mcp-config.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers",
+              "note": "Or $XDG_CONFIG_HOME/mcp-config.json."
+            },
+            {
+              "path": ".vscode/mcp.json",
+              "scope": "project",
+              "format": "json",
+              "key": "servers",
+              "note": "Project config uses the VS Code servers key."
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "type": "\"stdio\" | \"http\" | \"sse\"",
+              "required": false,
+              "description": "Server transport type."
+            },
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            },
+            {
+              "name": "tools",
+              "type": "string[]",
+              "required": false,
+              "description": "Tool allow-list; global entries use [\"*\"] for all tools."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": []
+        }
+      }
+    },
+    {
+      "name": "Goose",
+      "type": "cli",
+      "vendor": "Block",
+      "homepage": "https://block.github.io/goose/",
+      "id": "goose",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in YAML under the extensions key.",
+          "files": [
+            {
+              "path": "~/.config/goose/config.yaml",
+              "scope": "global",
+              "format": "yaml",
+              "key": "extensions",
+              "note": "Windows: %APPDATA%/Block/goose/config/config.yaml."
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": false,
+              "description": "Extension name."
+            },
+            {
+              "name": "cmd",
+              "type": "string",
+              "required": false,
+              "description": "Command for a local (stdio) extension."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "uri",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote extension."
+            },
+            {
+              "name": "type",
+              "type": "\"stdio\" | \"sse\" | \"streamable_http\"",
+              "required": false,
+              "description": "Extension transport type."
+            },
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "required": false,
+              "description": "Whether the extension is enabled."
+            },
+            {
+              "name": "envs",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables."
+            },
+            {
+              "name": "timeout",
+              "type": "number",
+              "required": false,
+              "description": "Timeout in seconds."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Servers are configured as entries under the extensions key (not mcpServers)."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".goose/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/goose/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Hermes Agent",
+      "id": "hermes-agent",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".hermes/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.hermes/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "IBM Bob",
+      "vendor": "IBM",
+      "id": "bob",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".bob/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.bob/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "iFlow CLI",
+      "type": "cli",
+      "vendor": "iFlow",
+      "id": "iflow-cli",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".iflow/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.iflow/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "inference.sh",
+      "id": "inference-sh",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".inferencesh/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.inferencesh/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jazz",
+      "id": "jazz",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".jazz/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.jazz/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Junie",
+      "type": "ide-extension",
+      "vendor": "JetBrains",
+      "homepage": "https://www.jetbrains.com/junie/",
+      "id": "junie",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".junie/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.junie/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kilo Code",
+      "type": "ide-extension",
+      "vendor": "Kilo Code",
+      "homepage": "https://kilocode.ai/",
+      "id": "kilo",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".kilocode/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.kilocode/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kimi Code CLI",
+      "type": "cli",
+      "vendor": "Moonshot AI",
+      "id": "kimi-code-cli",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kiro CLI",
+      "type": "cli",
+      "vendor": "AWS",
+      "homepage": "https://kiro.dev/",
+      "id": "kiro-cli",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".kiro/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.kiro/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "unsupported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "supported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills).",
+            "Custom agents must add \"resources\": [\"skill://.kiro/skills/**/SKILL.md\"] to .kiro/agents/<agent>.json."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kode",
+      "id": "kode",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".kode/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.kode/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lingma",
+      "type": "ide-extension",
+      "vendor": "Alibaba",
+      "id": "lingma",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".lingma/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.lingma/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Loaf",
+      "id": "loaf",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "MCPJam",
+      "id": "mcpjam",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".mcpjam/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.mcpjam/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "MCPorter",
+      "type": "cli",
+      "id": "mcporter",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/.mcporter/mcporter.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers",
+              "note": "Also reads mcporter.jsonc."
+            },
+            {
+              "path": "config/mcporter.json",
+              "scope": "project",
+              "format": "json",
+              "key": "mcpServers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "type",
+              "type": "\"http\" | \"sse\"",
+              "required": false,
+              "description": "Remote transport type."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": []
+        }
+      }
+    },
+    {
+      "name": "Mistral Vibe",
+      "type": "cli",
+      "vendor": "Mistral",
+      "homepage": "https://mistral.ai/",
+      "id": "mistral-vibe",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".vibe/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.vibe/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Moxby",
+      "id": "moxby",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".moxby/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.moxby/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mux",
+      "id": "mux",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".mux/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.mux/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Neovate",
+      "id": "neovate",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".neovate/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.neovate/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ona",
+      "type": "cli",
+      "vendor": "Ona",
+      "id": "ona",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".ona/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.ona/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "OpenClaw",
+      "id": "openclaw",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": "skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.openclaw/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills).",
+            "Global path falls back to ~/.clawdbot/skills then ~/.moltbot/skills."
+          ]
+        }
+      }
+    },
+    {
+      "name": "OpenCode",
+      "type": "cli",
+      "vendor": "opencode",
+      "homepage": "https://opencode.ai",
+      "id": "opencode",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcp key.",
+          "files": [
+            {
+              "path": "~/.config/opencode/opencode.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcp"
+            },
+            {
+              "path": "opencode.json",
+              "scope": "project",
+              "format": "json",
+              "key": "mcp"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "type": "\"local\" | \"remote\"",
+              "required": false,
+              "description": "Server type."
+            },
+            {
+              "name": "command",
+              "type": "string[]",
+              "required": false,
+              "description": "For local servers: [command, ...args]."
+            },
+            {
+              "name": "environment",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for local servers."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            },
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "required": false,
+              "description": "Whether the server is enabled."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Local servers use type 'local' with command as an array; remote servers use type 'remote' with url."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/opencode/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "OpenHands",
+      "type": "cli",
+      "vendor": "All Hands AI",
+      "homepage": "https://github.com/All-Hands-AI/OpenHands",
+      "id": "openhands",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".openhands/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.openhands/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pi",
+      "id": "pi",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".pi/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.pi/agent/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pochi",
+      "id": "pochi",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".pochi/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.pochi/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "PromptScript",
+      "id": "promptscript",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills).",
+            "Global install not supported."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Qoder",
+      "type": "editor",
+      "vendor": "Qoder",
+      "homepage": "https://qoder.com/",
+      "id": "qoder",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".qoder/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.qoder/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Qoder CN",
+      "type": "editor",
+      "vendor": "Qoder",
+      "id": "qoder-cn",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".qoder/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.qoder-cn/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Qwen Code",
+      "type": "cli",
+      "vendor": "Alibaba",
+      "homepage": "https://github.com/QwenLM/qwen-code",
+      "id": "qwen-code",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".qwen/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.qwen/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Reasonix",
+      "id": "reasonix",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".reasonix/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.reasonix/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Replit",
+      "type": "platform",
+      "vendor": "Replit",
+      "homepage": "https://replit.com/",
+      "id": "replit",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.config/agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Roo Code",
+      "type": "ide-extension",
+      "vendor": "Roo Code",
+      "homepage": "https://roocode.com/",
+      "id": "roo",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".roo/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.roo/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "supported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Rovo Dev",
+      "type": "cli",
+      "vendor": "Atlassian",
+      "id": "rovodev",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".rovodev/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.rovodev/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tabnine CLI",
+      "type": "cli",
+      "vendor": "Tabnine",
+      "homepage": "https://www.tabnine.com/",
+      "id": "tabnine-cli",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".tabnine/agent/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.tabnine/agent/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Terramind",
+      "id": "terramind",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".terramind/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.terramind/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tinycloud",
+      "id": "tinycloud",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".tinycloud/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.tinycloud/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trae",
+      "type": "editor",
+      "vendor": "ByteDance",
+      "homepage": "https://www.trae.ai/",
+      "id": "trae",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".trae/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.trae/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Trae CN",
+      "type": "editor",
+      "vendor": "ByteDance",
+      "homepage": "https://www.trae.com.cn/",
+      "id": "trae-cn",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".trae/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.trae-cn/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "VS Code",
+      "type": "editor",
+      "vendor": "Microsoft",
+      "homepage": "https://code.visualstudio.com/",
+      "id": "vscode",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the servers key.",
+          "files": [
+            {
+              "path": "<VS Code User>/mcp.json",
+              "scope": "global",
+              "format": "json",
+              "key": "servers",
+              "note": "e.g. ~/Library/Application Support/Code/User/mcp.json on macOS."
+            },
+            {
+              "path": ".vscode/mcp.json",
+              "scope": "project",
+              "format": "json",
+              "key": "servers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "type",
+              "type": "\"http\" | \"sse\"",
+              "required": false,
+              "description": "Remote transport type."
+            },
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Servers live under the servers key (not mcpServers)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Warp",
+      "type": "cli",
+      "vendor": "Warp",
+      "homepage": "https://www.warp.dev/",
+      "id": "warp",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Windsurf",
+      "type": "editor",
+      "vendor": "Codeium",
+      "homepage": "https://windsurf.com",
+      "id": "windsurf",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the mcpServers key.",
+          "files": [
+            {
+              "path": "~/.codeium/windsurf/mcp_config.json",
+              "scope": "global",
+              "format": "json",
+              "key": "mcpServers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "serverUrl",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Remote entries use serverUrl (no type field)."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".windsurf/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.codeium/windsurf/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zed",
+      "type": "editor",
+      "vendor": "Zed Industries",
+      "homepage": "https://zed.dev",
+      "id": "zed",
+      "surfaces": {
+        "mcp": {
+          "status": "supported",
+          "summary": "Configure MCP servers in JSON under the context_servers key.",
+          "files": [
+            {
+              "path": "<Zed config>/settings.json",
+              "scope": "global",
+              "format": "json",
+              "key": "context_servers",
+              "note": "macOS/Windows: .../Zed/settings.json; Linux: .../zed/settings.json."
+            },
+            {
+              "path": ".zed/settings.json",
+              "scope": "project",
+              "format": "json",
+              "key": "context_servers"
+            }
+          ],
+          "fields": [
+            {
+              "name": "source",
+              "type": "\"custom\"",
+              "required": false,
+              "description": "Set to 'custom' for user-defined servers."
+            },
+            {
+              "name": "command",
+              "type": "string",
+              "required": false,
+              "description": "Command to start a local (stdio) server."
+            },
+            {
+              "name": "args",
+              "type": "string[]",
+              "required": false,
+              "description": "Arguments passed to the command."
+            },
+            {
+              "name": "env",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "Environment variables for the server."
+            },
+            {
+              "name": "type",
+              "type": "\"http\" | \"sse\"",
+              "required": false,
+              "description": "Remote transport type."
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "required": false,
+              "description": "Endpoint URL for a remote server."
+            },
+            {
+              "name": "headers",
+              "type": "record<string, string>",
+              "required": false,
+              "description": "HTTP headers for a remote server."
+            }
+          ],
+          "transports": [
+            "stdio",
+            "http",
+            "sse"
+          ],
+          "auth": [
+            "headers"
+          ],
+          "invocation": [],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Servers live under context_servers; entries set source: \"custom\"."
+          ]
+        },
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".agents/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.agents/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zencoder",
+      "type": "ide-extension",
+      "vendor": "Zencoder",
+      "homepage": "https://zencoder.ai/",
+      "id": "zencoder",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".zencoder/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.zencoder/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [
+            {
+              "name": "allowed-tools",
+              "status": "unsupported"
+            },
+            {
+              "name": "context: fork",
+              "status": "unsupported"
+            },
+            {
+              "name": "Hooks",
+              "status": "unsupported"
+            }
+          ],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zenflow",
+      "type": "ide-extension",
+      "vendor": "Zencoder",
+      "homepage": "https://zencoder.ai/",
+      "id": "zenflow",
+      "surfaces": {
+        "skills": {
+          "status": "supported",
+          "summary": "SKILL.md skills following the open Agent Skills standard.",
+          "files": [
+            {
+              "path": ".zencoder/skills/<name>/SKILL.md",
+              "scope": "project",
+              "format": "markdown"
+            },
+            {
+              "path": "~/.zencoder/skills/<name>/SKILL.md",
+              "scope": "global",
+              "format": "markdown"
+            }
+          ],
+          "fields": [
+            {
+              "name": "name",
+              "type": "string",
+              "required": true,
+              "description": "Skill identifier (required by the Agent Skills standard)."
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": true,
+              "description": "What the skill does and when to use it."
+            }
+          ],
+          "transports": [],
+          "auth": [],
+          "invocation": [
+            "/skill-name"
+          ],
+          "events": [],
+          "capabilities": [],
+          "examples": [],
+          "notes": [
+            "Skill discovery paths from the open skills CLI (vercel-labs/skills)."
+          ]
         }
       }
     }

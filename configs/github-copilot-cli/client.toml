@@ -1,0 +1,4 @@
+name = "GitHub Copilot CLI"
+type = "cli"
+vendor = "GitHub"
+homepage = "https://github.com/features/copilot"

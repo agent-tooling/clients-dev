@@ -1,0 +1,46 @@
+status = "supported"
+summary = "Configure MCP servers in JSON under the mcpServers key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+
+[[files]]
+path = "~/.cline/data/settings/cline_mcp_settings.json"
+scope = "global"
+format = "json"
+key = "mcpServers"
+note = "$CLINE_DIR defaults to ~/.cline."
+
+[[fields]]
+name = "command"
+type = "string"
+description = "Command to start a local (stdio) server."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "env"
+type = "record<string, string>"
+description = "Environment variables for the server."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote server."
+
+[[fields]]
+name = "type"
+type = "\"sse\" | \"streamableHttp\""
+description = "Remote transport type."
+
+[[fields]]
+name = "disabled"
+type = "boolean"
+description = "Whether the server is disabled."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for a remote server."

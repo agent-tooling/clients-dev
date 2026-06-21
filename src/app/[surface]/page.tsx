@@ -5,7 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import { ConfigSurface } from "@/components/config-surface";
 import { getClientsForSurface } from "@/lib/clients/catalog";
 import { SURFACES, SURFACE_META, type SurfaceId } from "@/lib/clients/schema";
-import { CLIENT_TYPE_LABEL, SURFACE_ICON } from "@/lib/clients/display";
+import { clientTypeLabel, SURFACE_ICON } from "@/lib/clients/display";
 
 export const dynamicParams = false;
 
@@ -96,7 +96,7 @@ export default async function SurfacePage({
                   {client.name}
                 </Link>
                 <span className="text-xs text-muted-foreground">
-                  {CLIENT_TYPE_LABEL[client.type] ?? client.type}
+                  {clientTypeLabel(client.type)}
                 </span>
               </div>
               <ConfigSurface

@@ -1,0 +1,4 @@
+name = "OpenCode"
+type = "cli"
+vendor = "opencode"
+homepage = "https://opencode.ai"

@@ -1,0 +1,4 @@
+name = "Junie"
+type = "ide-extension"
+vendor = "JetBrains"
+homepage = "https://www.jetbrains.com/junie/"

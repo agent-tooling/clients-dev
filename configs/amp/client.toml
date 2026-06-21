@@ -1,0 +1,4 @@
+name = "Amp"
+type = "cli"
+vendor = "Sourcegraph"
+homepage = "https://ampcode.com/"

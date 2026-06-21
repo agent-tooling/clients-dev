@@ -1,0 +1,52 @@
+status = "supported"
+summary = "Configure MCP servers in YAML under the extensions key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+notes = ["Servers are configured as entries under the extensions key (not mcpServers)."]
+
+[[files]]
+path = "~/.config/goose/config.yaml"
+scope = "global"
+format = "yaml"
+key = "extensions"
+note = "Windows: %APPDATA%/Block/goose/config/config.yaml."
+
+[[fields]]
+name = "name"
+type = "string"
+description = "Extension name."
+
+[[fields]]
+name = "cmd"
+type = "string"
+description = "Command for a local (stdio) extension."
+
+[[fields]]
+name = "args"
+type = "string[]"
+description = "Arguments passed to the command."
+
+[[fields]]
+name = "uri"
+type = "string"
+description = "Endpoint URL for a remote extension."
+
+[[fields]]
+name = "type"
+type = "\"stdio\" | \"sse\" | \"streamable_http\""
+description = "Extension transport type."
+
+[[fields]]
+name = "enabled"
+type = "boolean"
+description = "Whether the extension is enabled."
+
+[[fields]]
+name = "envs"
+type = "record<string, string>"
+description = "Environment variables."
+
+[[fields]]
+name = "timeout"
+type = "number"
+description = "Timeout in seconds."

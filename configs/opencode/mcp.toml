@@ -1,0 +1,47 @@
+status = "supported"
+summary = "Configure MCP servers in JSON under the mcp key."
+transports = ["stdio", "http", "sse"]
+auth = ["headers"]
+notes = ["Local servers use type 'local' with command as an array; remote servers use type 'remote' with url."]
+
+[[files]]
+path = "~/.config/opencode/opencode.json"
+scope = "global"
+format = "json"
+key = "mcp"
+
+[[files]]
+path = "opencode.json"
+scope = "project"
+format = "json"
+key = "mcp"
+
+[[fields]]
+name = "type"
+type = "\"local\" | \"remote\""
+description = "Server type."
+
+[[fields]]
+name = "command"
+type = "string[]"
+description = "For local servers: [command, ...args]."
+
+[[fields]]
+name = "environment"
+type = "record<string, string>"
+description = "Environment variables for local servers."
+
+[[fields]]
+name = "url"
+type = "string"
+description = "Endpoint URL for a remote server."
+
+[[fields]]
+name = "headers"
+type = "record<string, string>"
+description = "HTTP headers for a remote server."
+
+[[fields]]
+name = "enabled"
+type = "boolean"
+description = "Whether the server is enabled."

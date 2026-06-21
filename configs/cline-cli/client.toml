@@ -1,0 +1,4 @@
+name = "Cline CLI"
+type = "cli"
+vendor = "Cline"
+homepage = "https://cline.bot"

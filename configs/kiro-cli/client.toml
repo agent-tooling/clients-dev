@@ -1,0 +1,4 @@
+name = "Kiro CLI"
+type = "cli"
+vendor = "AWS"
+homepage = "https://kiro.dev/"

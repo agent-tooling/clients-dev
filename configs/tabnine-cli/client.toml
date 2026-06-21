@@ -1,0 +1,4 @@
+name = "Tabnine CLI"
+type = "cli"
+vendor = "Tabnine"
+homepage = "https://www.tabnine.com/"
